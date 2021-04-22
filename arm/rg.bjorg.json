@@ -1,0 +1,11 @@
+{
+  "id": "/subscriptions/26b2efed-ae4f-4b8d-85ee-da05163f3f4c/resourceGroups/bjorg",
+  "location": "eastus",
+  "managedBy": null,
+  "name": "bjorg",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}

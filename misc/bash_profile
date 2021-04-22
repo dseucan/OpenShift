@@ -1,0 +1,17 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/ocpuser.id_rsa
+
+export KUBE_EDITOR=vim
+
+alias auth='export KUBECONFIG=$PWD/auth/kubeconfig'
+
+. ~/.kube/completion.bash.inc
+

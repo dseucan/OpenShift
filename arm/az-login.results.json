@@ -1,0 +1,16 @@
+[
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "d7094f94-f9b0-4cde-9a8a-a6677d13b912",
+    "id": "26b2efed-ae4f-4b8d-85ee-da05163f3f4c",
+    "isDefault": true,
+    "managedByTenants": [],
+    "name": "OCP",
+    "state": "Enabled",
+    "tenantId": "d7094f94-f9b0-4cde-9a8a-a6677d13b912",
+    "user": {
+      "name": "jwilliams@devenchoice.onmicrosoft.com",
+      "type": "user"
+    }
+  }
+]
