@@ -80,14 +80,14 @@
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "10.16.0.0/18"
+            "[parameters('addressSpaces.value[0]')]"
           ]
         },
         "subnets": [
           {
             "name": "pods",
             "properties": {
-              "addressPrefix": "10.16.0.0/19",
+              "addressPrefix": "[parameters('subnet0_addressRange')]",
               "delegations": [],
               "privateEndpointNetworkPolicies": "Enabled",
               "privateLinkServiceNetworkPolicies": "Enabled"
@@ -201,29 +201,6 @@
         "delegations": [],
         "privateEndpointNetworkPolicies": "Enabled",
         "privateLinkServiceNetworkPolicies": "Enabled"
-      }
-    },
-    {
-      "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-      "apiVersion": "2020-11-01",
-      "name": "[concat(parameters('virtualNetworkName'), '/openshift')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
-      ],
-      "properties": {
-        "peeringState": "Connected",
-        "remoteVirtualNetwork": {
-          "id": "[parameters('openShift_vnet_externalid')]"
-        },
-        "allowVirtualNetworkAccess": true,
-        "allowForwardedTraffic": true,
-        "allowGatewayTransit": false,
-        "useRemoteGateways": false,
-        "remoteAddressSpace": {
-          "addressPrefixes": [
-            "10.1.0.0/24"
-          ]
-        }
       }
     }
   ]
