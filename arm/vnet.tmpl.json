@@ -80,7 +80,7 @@
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "[parameters('addressSpaces.value[0]')]"
+            "[parameters('addressSpaces')[0]]"
           ]
         },
         "subnets": [
@@ -96,7 +96,7 @@
           {
             "name": "services",
             "properties": {
-              "addressPrefix": "[parmeters('subnet1_addressRange')]",
+              "addressPrefix": "[parameters('subnet1_addressRange')]",
               "delegations": [],
               "privateEndpointNetworkPolicies": "Enabled",
               "privateLinkServiceNetworkPolicies": "Enabled"
@@ -105,7 +105,7 @@
           {
             "name": "masters",
             "properties": {
-              "addressPrefix": "[parmeters('subnet2_addressRange')]",
+              "addressPrefix": "[parameters('subnet2_addressRange')]",
               "delegations": [],
               "privateEndpointNetworkPolicies": "Enabled",
               "privateLinkServiceNetworkPolicies": "Enabled"
@@ -114,7 +114,7 @@
           {
             "name": "infras",
             "properties": {
-              "addressPrefix": "[parmeters('subnet3_addressRange')]",
+              "addressPrefix": "[parameters('subnet3_addressRange')]",
               "delegations": [],
               "privateEndpointNetworkPolicies": "Enabled",
               "privateLinkServiceNetworkPolicies": "Enabled"
@@ -123,7 +123,7 @@
           {
             "name": "workers",
             "properties": {
-              "addressPrefix": "[parmeters('subnet4_addressRange')]",
+              "addressPrefix": "[parameters('subnet4_addressRange')]",
               "delegations": [],
               "privateEndpointNetworkPolicies": "Enabled",
               "privateLinkServiceNetworkPolicies": "Enabled"
@@ -141,7 +141,7 @@
         "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
       ],
       "properties": {
-        "addressPrefix": "[parmeters('subnet3_addressRange')]",
+        "addressPrefix": "[parameters('subnet3_addressRange')]",
         "delegations": [],
         "privateEndpointNetworkPolicies": "Enabled",
         "privateLinkServiceNetworkPolicies": "Enabled"
@@ -155,7 +155,7 @@
         "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
       ],
       "properties": {
-        "addressPrefix": "[parmeters('subnet2_addressRange')]",
+        "addressPrefix": "[parameters('subnet2_addressRange')]",
         "delegations": [],
         "privateEndpointNetworkPolicies": "Enabled",
         "privateLinkServiceNetworkPolicies": "Enabled"
@@ -183,7 +183,7 @@
         "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
       ],
       "properties": {
-        "addressPrefix": "[parmeters('subnet1_addressRange')]",
+        "addressPrefix": "[parameters('subnet1_addressRange')]",
         "delegations": [],
         "privateEndpointNetworkPolicies": "Enabled",
         "privateLinkServiceNetworkPolicies": "Enabled"
@@ -197,7 +197,7 @@
         "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
       ],
       "properties": {
-        "addressPrefix": "[parmeters('subnet4_addressRange')]",
+        "addressPrefix": "[parameters('subnet4_addressRange')]",
         "delegations": [],
         "privateEndpointNetworkPolicies": "Enabled",
         "privateLinkServiceNetworkPolicies": "Enabled"
