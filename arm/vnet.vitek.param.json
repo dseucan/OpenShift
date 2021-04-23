@@ -6,7 +6,7 @@
             "value": "eastus"
         },
         "virtualNetworkName": {
-            "value": "vadik-vnet"
+            "value": "vitek-vnet"
         },
         "resourceGroup": {
             "value": "example-rg"
