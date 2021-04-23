@@ -6,45 +6,45 @@
             "value": "eastus"
         },
         "virtualNetworkName": {
-            "value": "clu-b-vnet"
+            "value": "xacik-vnet"
         },
         "resourceGroup": {
             "value": "example-rg"
         },
         "addressSpaces": {
             "value": [
-                "10.16.64.0/18"
+                "10.16.192.0/18"
             ]
         },
         "subnet0_name": {
             "value": "pods"
         },
         "subnet0_addressRange": {
-            "value": "10.16.64.0/19"
+            "value": "10.16.192.0/19"
         },
         "subnet1_name": {
             "value": "services"
         },
         "subnet1_addressRange": {
-            "value": "10.16.96.0/20"
+            "value": "10.16.224.0/20"
         },
         "subnet2_name": {
             "value": "masters"
         },
         "subnet2_addressRange": {
-            "value": "10.16.112.0/22"
+            "value": "10.16.240.0/22"
         },
         "subnet3_name": {
             "value": "infras"
         },
         "subnet3_addressRange": {
-            "value": "10.16.116.0/22"
+            "value": "10.16.244.0/22"
         },
         "subnet4_name": {
             "value": "workers"
         },
         "subnet4_addressRange": {
-            "value": "10.16.120.0/21"
+            "value": "10.16.248.0/21"
         }
     }
 }

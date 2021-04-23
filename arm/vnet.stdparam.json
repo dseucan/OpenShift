@@ -1,24 +1,27 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "extendedLocation": {
-            "value": {}
-        },
-        "ipv6Enabled": {
-            "value": false
-        },
-        "subnetCount": {
-            "value": 5
-        },
-        "ddosProtectionPlanEnabled": {
-            "value": false
-        },
-        "firewallEnabled": {
-            "value": false
-        },
-        "bastionEnabled": {
-            "value": false
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "openShift_vnet_externalid": {
+      "value": "/subscriptions/26b2efed-ae4f-4b8d-85ee-da05163f3f4c/resourceGroups/OpenShift/providers/Microsoft.Network/virtualNetworks/OpenShift-vnet"
+    },
+    "extendedLocation": {
+      "value": {}
+    },
+    "ipv6Enabled": {
+      "value": false
+    },
+    "subnetCount": {
+      "value": 5
+    },
+    "ddosProtectionPlanEnabled": {
+      "value": false
+    },
+    "firewallEnabled": {
+      "value": false
+    },
+    "bastionEnabled": {
+      "value": false
     }
+  }
 }

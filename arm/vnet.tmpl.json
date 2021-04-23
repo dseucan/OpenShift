@@ -1,118 +1,230 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string"
-        },
-        "extendedLocation": {
-            "type": "object"
-        },
-        "virtualNetworkName": {
-            "type": "string"
-        },
-        "resourceGroup": {
-            "type": "string"
-        },
-        "addressSpaces": {
-            "type": "array"
-        },
-        "ipv6Enabled": {
-            "type": "bool"
-        },
-        "subnetCount": {
-            "type": "int"
-        },
-        "subnet0_name": {
-            "type": "string"
-        },
-        "subnet0_addressRange": {
-            "type": "string"
-        },
-        "subnet1_name": {
-            "type": "string"
-        },
-        "subnet1_addressRange": {
-            "type": "string"
-        },
-        "subnet2_name": {
-            "type": "string"
-        },
-        "subnet2_addressRange": {
-            "type": "string"
-        },
-        "subnet3_name": {
-            "type": "string"
-        },
-        "subnet3_addressRange": {
-            "type": "string"
-        },
-        "subnet4_name": {
-            "type": "string"
-        },
-        "subnet4_addressRange": {
-            "type": "string"
-        },
-        "ddosProtectionPlanEnabled": {
-            "type": "bool"
-        },
-        "firewallEnabled": {
-            "type": "bool"
-        },
-        "bastionEnabled": {
-            "type": "bool"
-        }
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string"
     },
-    "variables": {},
-    "resources": [
-        {
-            "name": "[parameters('virtualNetworkName')]",
-            "type": "Microsoft.Network/VirtualNetworks",
-            "apiVersion": "2020-06-01",
-            "location": "[parameters('location')]",
-            "extendedLocation": "[if(empty(parameters('extendedLocation')), json('null'), parameters('extendedLocation'))]",
-            "dependsOn": [],
-            "tags": {},
+    "extendedLocation": {
+      "type": "object"
+    },
+    "virtualNetworkName": {
+      "type": "string"
+    },
+    "resourceGroup": {
+      "type": "string"
+    },
+    "addressSpaces": {
+      "type": "array"
+    },
+    "ipv6Enabled": {
+      "type": "bool"
+    },
+    "subnetCount": {
+      "type": "int"
+    },
+    "subnet0_name": {
+      "type": "string"
+    },
+    "subnet0_addressRange": {
+      "type": "string"
+    },
+    "subnet1_name": {
+      "type": "string"
+    },
+    "subnet1_addressRange": {
+      "type": "string"
+    },
+    "subnet2_name": {
+      "type": "string"
+    },
+    "subnet2_addressRange": {
+      "type": "string"
+    },
+    "subnet3_name": {
+      "type": "string"
+    },
+    "subnet3_addressRange": {
+      "type": "string"
+    },
+    "subnet4_name": {
+      "type": "string"
+    },
+    "subnet4_addressRange": {
+      "type": "string"
+    },
+    "ddosProtectionPlanEnabled": {
+      "type": "bool"
+    },
+    "firewallEnabled": {
+      "type": "bool"
+    },
+    "bastionEnabled": {
+      "type": "bool"
+    },
+    "openShift_vnet_externalid": {
+      "defaultValue": "/subscriptions/26b2efed-ae4f-4b8d-85ee-da05163f3f4c/resourceGroups/OpenShift/providers/Microsoft.Network/virtualNetworks/OpenShift-vnet",
+      "type": "String"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "name": "[parameters('virtualNetworkName')]",
+      "type": "Microsoft.Network/VirtualNetworks",
+      "apiVersion": "2020-06-01",
+      "location": "[parameters('location')]",
+      "extendedLocation": "[if(empty(parameters('extendedLocation')), json('null'), parameters('extendedLocation'))]",
+      "dependsOn": [],
+      "tags": {},
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.16.0.0/18"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "pods",
             "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "10.16.0.0/18"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "pods",
-                        "properties": {
-                            "addressPrefix": "10.16.0.0/19"
-                        }
-                    },
-                    {
-                        "name": "services",
-                        "properties": {
-                            "addressPrefix": "10.16.32.0/20"
-                        }
-                    },
-                    {
-                        "name": "masters",
-                        "properties": {
-                            "addressPrefix": "10.16.48.0/22"
-                        }
-                    },
-                    {
-                        "name": "infras",
-                        "properties": {
-                            "addressPrefix": "10.16.52.0/22"
-                        }
-                    },
-                    {
-                        "name": "workers",
-                        "properties": {
-                            "addressPrefix": "10.16.56.0/21"
-                        }
-                    }
-                ],
-                "enableDdosProtection": "[parameters('ddosProtectionPlanEnabled')]"
+              "addressPrefix": "10.16.0.0/19",
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Enabled",
+              "privateLinkServiceNetworkPolicies": "Enabled"
             }
+          },
+          {
+            "name": "services",
+            "properties": {
+              "addressPrefix": "10.16.32.0/20",
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Enabled",
+              "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+          },
+          {
+            "name": "masters",
+            "properties": {
+              "addressPrefix": "10.16.48.0/22",
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Enabled",
+              "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+          },
+          {
+            "name": "infras",
+            "properties": {
+              "addressPrefix": "10.16.52.0/22",
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Enabled",
+              "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+          },
+          {
+            "name": "workers",
+            "properties": {
+              "addressPrefix": "10.16.56.0/21",
+              "delegations": [],
+              "privateEndpointNetworkPolicies": "Enabled",
+              "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+          }
+        ],
+        "enableDdosProtection": "[parameters('ddosProtectionPlanEnabled')]"
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks/subnets",
+      "apiVersion": "2020-11-01",
+      "name": "[concat(parameters('virtualNetworkName'), '/infras')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
+      ],
+      "properties": {
+        "addressPrefix": "10.16.52.0/22",
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Enabled",
+        "privateLinkServiceNetworkPolicies": "Enabled"
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks/subnets",
+      "apiVersion": "2020-11-01",
+      "name": "[concat(parameters('virtualNetworkName'), '/masters')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
+      ],
+      "properties": {
+        "addressPrefix": "10.16.48.0/22",
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Enabled",
+        "privateLinkServiceNetworkPolicies": "Enabled"
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks/subnets",
+      "apiVersion": "2020-11-01",
+      "name": "[concat(parameters('virtualNetworkName'), '/pods')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
+      ],
+      "properties": {
+        "addressPrefix": "10.16.0.0/19",
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Enabled",
+        "privateLinkServiceNetworkPolicies": "Enabled"
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks/subnets",
+      "apiVersion": "2020-11-01",
+      "name": "[concat(parameters('virtualNetworkName'), '/services')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
+      ],
+      "properties": {
+        "addressPrefix": "10.16.32.0/20",
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Enabled",
+        "privateLinkServiceNetworkPolicies": "Enabled"
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks/subnets",
+      "apiVersion": "2020-11-01",
+      "name": "[concat(parameters('virtualNetworkName'), '/workers')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
+      ],
+      "properties": {
+        "addressPrefix": "10.16.56.0/21",
+        "delegations": [],
+        "privateEndpointNetworkPolicies": "Enabled",
+        "privateLinkServiceNetworkPolicies": "Enabled"
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+      "apiVersion": "2020-11-01",
+      "name": "[concat(parameters('virtualNetworkName'), '/openshift')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
+      ],
+      "properties": {
+        "peeringState": "Connected",
+        "remoteVirtualNetwork": {
+          "id": "[parameters('openShift_vnet_externalid')]"
+        },
+        "allowVirtualNetworkAccess": true,
+        "allowForwardedTraffic": true,
+        "allowGatewayTransit": false,
+        "useRemoteGateways": false,
+        "remoteAddressSpace": {
+          "addressPrefixes": [
+            "10.1.0.0/24"
+          ]
         }
-    ]
+      }
+    }
+  ]
 }
