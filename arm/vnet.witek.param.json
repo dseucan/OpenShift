@@ -9,7 +9,7 @@
             "value": "witek-vnet"
         },
         "resourceGroup": {
-            "value": "example-rg"
+            "value": "witek-rg"
         },
         "addressSpaces": {
             "value": [

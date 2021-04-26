@@ -9,7 +9,7 @@
             "value": "xacik-vnet"
         },
         "resourceGroup": {
-            "value": "example-rg"
+            "value": "xacik-rg"
         },
         "addressSpaces": {
             "value": [
