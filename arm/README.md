@@ -40,13 +40,17 @@ The individual cluster parameter files are pre-populated with the address space 
 # Building a virtual network for a cluster
 1. Create a resource group for the cluster networks:
 
+    ```
     cluster=vitek
     location=eastus
     az group create --resource-group $cluster-rg --location $location
+    ```
     
 2. Deploy the template with cluster-specific and standard parameter files:
 
+    ```
     az deployment group create --resource-group $cluster-rg --template-file vnet.tmpl.json \
       --parameters @vnet.stdparam.json --parameters @vnet.$cluster.param.json
+    ```
       
     
